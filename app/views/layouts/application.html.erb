@@ -12,6 +12,9 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= yield %>
+    <div class="container" style="height: 100vh;">
+      <%= yield %>
+    </div>
   </body>
+  <%= render "shared/footer" %>
 </html>
