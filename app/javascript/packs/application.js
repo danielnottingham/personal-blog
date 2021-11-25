@@ -12,6 +12,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import "bootstrap"
+import "@hotwired/stimulus"
+import "../controllers/index"
+
 
 Rails.start()
 Turbolinks.start()
