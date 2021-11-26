@@ -1,31 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<div>
+  <div class="row">
+    <div class="col-3">
+      <div class="card card border-secondary">
+        <div class="card-header">
+          <%= current_user.full_name %>
+        </div>
+        <div class="card-body">
+          <strong><span>Articles published:</span></strong> <%= current_user.articles.count %>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <h1>Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= article.user_id %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+      <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+      <% @articles.each do |article| %>
+        <div class="card card border-secondary mt-3 mb-3" style="width: 70rem;">
+          <div class="card-header">
+            <h3><%= link_to article.title, article %></h3>
+          </div>
+          <div class="card-body">
+            <%= truncate(strip_tags(article.body.to_s), length: 200, omission: "...")  %>
+            <br><br>
+            <strong><%= article.user.full_name %></strong> ( <%= article.updated_at.strftime("%M:%H - %d/%m/%Y") %> )
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

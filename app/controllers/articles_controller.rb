@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all.with_rich_text_body
+    @articles = Article.all.with_rich_text_body.order(created_at: :desc)
   end
 
   # GET /articles/1 or /articles/1.json

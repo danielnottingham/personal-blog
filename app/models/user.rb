@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   validates :name, :surname, presence: true
   has_one_attached :avatar
+  has_many :articles
+
+  def full_name
+    [name, surname].select(&:present?).join(' ').titleize
+  end
 end

@@ -11,11 +11,14 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @article.user_id %>
+  <strong>Author:</strong>
+  <%= @article.user.full_name %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<% if @article.user == current_user %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+<% end %>
+
 <%= link_to 'Back', articles_path %>
 
 <h3>Comments</h3>
